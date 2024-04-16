@@ -20,7 +20,7 @@ jobs:
               run: npm ci #npm ci (=npm install)
             - name: Install and run redis-server #redis 설치 및 실행
               run: | #여러 줄 사용하고 싶을 때 | 사용
-                sudo apt-get upate
+                sudo apt-get update
                 sudo apt-get install -y redis-server
                 redis-server --demonize yes --requirepass test_env --port 6380
             - name: Run test #테스트 실행
