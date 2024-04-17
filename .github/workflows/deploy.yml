@@ -27,7 +27,7 @@ jobs:
       - name: SSH and deploy #원래는 ssh -i ~/.ssh/github_id_rsa ubuntu@{public ip} 해야했는데, 우린 이미 디폴트 id rsa 를 설정했기 때문에 생략한다.
         run: |
           ssh ${{secrets.SSH_USERNAME}}@${{secrets.SSH_PUBLIC_IP}} " #이제 SSH 로 들어가서 해당 서버에서 내릴 명령어를 넣으면 된다.
-           cd lightstail-cicd-test
+           cd lightsail-cicd-test
            git pull || exit 1
            npm install || exit 1
            npm run build || exit 1
