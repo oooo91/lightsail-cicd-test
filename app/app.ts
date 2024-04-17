@@ -15,7 +15,7 @@ export const createApp = (client : RedisClient) => {
     app.use(express.json());
 
     app.get("/", (req, res) => {
-        res.status(200).send("hello from express");
+        res.status(200).send("hello from express, deploy on AWS Lightsail");
     });
 
     app.post("/messages", async (req, res) => {
