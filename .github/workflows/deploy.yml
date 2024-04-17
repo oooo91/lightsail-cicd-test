@@ -22,7 +22,7 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
       - name: Set up known hosts
         run: |
-          echo "${{ secrets.SSH_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+          echo "${{ secrets.SSH_KNOWN_HOST }}" >> ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
       - name: SSH and deploy #원래는 ssh -i ~/.ssh/github_id_rsa ubuntu@{public ip} 해야했는데, 우린 이미 디폴트 id rsa 를 설정했기 때문에 생략한다.
         run: |
