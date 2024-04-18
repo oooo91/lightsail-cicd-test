@@ -1,0 +1,13 @@
+#테스트 설정 정보
+config:
+  target: http://localhost:4000
+  phases:
+   - duration: 5 #5초동안
+     arrivalRate: 100 #1초당 한 번에 100개의 요청 발생 -> 총 500개
+
+#실제 부하 테스트 시나리오, 가상 유저를 만들어준다. (각 유저마다 TCP 커넥션으로 새로운 세션을 생성한다. 각자 별도의 클라이언트의 쿠키와 - 서버의 메모리 사용하여 세션 유지)
+scenarios:
+  - flow:
+    - get:
+        url: "/messages" #/messages GET 요청
+
