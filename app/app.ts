@@ -18,6 +18,18 @@ export const createApp = (client : RedisClient) => {
         res.status(200).send("hello from express, deploy on AWS Lightsail please gg help me");
     });
 
+    //부하 테스트를 위한 더미 데이터 - 피보나치 (재귀) => CPU 연산 ↑ 
+    function fibonacci (n: number) :number {
+        if (n <= 1) return n;
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+    app.get("/fibonacci/:n", (req, res) => {
+        const n = parseInt(req.params.n, 10);
+        const result = fibonacci(n);
+        res.send(`Fibonacci(${n}) = ${result}`);
+    });
+
     app.post("/messages", async (req, res) => {
         const { message } = req.body;
         await client.lPush(LIST_KEY, message);
